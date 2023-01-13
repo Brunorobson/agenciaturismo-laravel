@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function index(){
-        return view('');
+        $title = 'Passagens Aereas';
+        return view('site.home.index', compact('title'));
     }
 
     public function promotions(){
-        return view('');
+        $title = 'Promoções';
+        return view('site.promotions.list', compact('title'));
     }
 }

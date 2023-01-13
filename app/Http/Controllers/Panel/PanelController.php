@@ -9,6 +9,6 @@ class PanelController extends Controller
 {
     public function index()
     {
-        return view('');
+        return view('panel.home.index');
     }
 }
