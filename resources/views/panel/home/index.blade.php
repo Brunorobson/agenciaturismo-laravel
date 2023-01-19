@@ -7,7 +7,7 @@
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Home Page</h1>
+    <h1 class="title-pg">Dashboard</h1>
 </div>
 
 <div class="content-din">
@@ -18,7 +18,7 @@
             <i class="fa fa-home" aria-hidden="true"></i>
             <div class="text-rel">
                 <h2 class="result">
-                    12
+                    {{$i}}
                 </h2>
                 <h3 class="result-ds">
                     Total de Usuários

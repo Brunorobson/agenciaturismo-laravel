@@ -1,21 +1,20 @@
 <?php
 
+use App\Http\Controllers\Panel\BrandController;
+use App\Http\Controllers\Panel\PanelController;
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(['prefix' => 'panel'], function(){
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/', [PanelController::class, 'index'])->name('panel');
+    Route::resource('/brands', BrandController::class);
+
 });
+
+Route::get('/', [SiteController::class, 'index']);
+
+Route::get('/promocoes', [SiteController::class, 'promotions'])->name('promotions');
 
 Route::middleware([
     'auth:sanctum',

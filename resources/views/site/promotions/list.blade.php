@@ -9,9 +9,8 @@
 
 
         <div class="row">
-            
-                @for($i =0; $i < 20; $i++)
 
+                @for($i =0; $i < 12; $i++)
             <article class="result col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="image-promo">
                     <img src="{{url('assets/site/images/buenos_aires.jpg')}}" alt="">
@@ -36,7 +35,7 @@
 
             </article><!--result-->
             
-                @endfor
+            @endfor
             
         </div><!--Row-->
     </section><!--Container-->

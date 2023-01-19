@@ -1,75 +1,156 @@
-@extends('site.layouts.app')
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>{{'Titulo'}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-@section('content-site')
+        <!--Style-->
+        <link href="{{url('assets/site/css/style.css')}}" rel="stylesheet">
 
-<section class="slide"></section><!--Slide-->
+        <!--Responsive-->
+        <link rel="stylesheet" href="{{url('assets/site/css/responsive.css')}}">
 
-        <div class="actions-form">
-            <h2>Encontre: </h2>
+        <!--Resets-->
+        <link href="{{url('assets/site/css/reset.css')}}" rel="stylesheet">
 
-            <form action="" class="form-home text-center">
-                <div class="form-group">
-                    <input type="text" name="cities_origin" list="cities_origin" class="form-control" placeholder="Cidade Origem">
-                    <datalist id="cities_origin">
-                        <option value="Cidade 1/GO">
-                        <option value="Cidade 2/GO">
-                        <option value="Cidade 3/GO">
-                        <option value="Cidade 4/GO">
-                        <option value="Cidade 5/GO">
-                    </datalist>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="cities_destination" list="cities_destination" class="form-control" placeholder="Cidade Destino">
-                    <datalist id="cities_destination">
-                        <option value="Outra Cidade 1/GO">
-                        <option value="Outra Cidade 2/GO">
-                        <option value="Outra Cidade 3/GO">
-                        <option value="Outra Cidade 4/GO">
-                        <option value="Outra Cidade 5/GO">
-                    </datalist>
-                </div>
-                <div class="form-group">
-                    <input type="date" name="date" class="form-control" placeholder="Data">
-                </div>
-                <!--
-                <button class="btn" type="submit">
-                    Procurar <i class="fa fa-search" aria-hidden="true"></i>
+        <!--Fonts Google-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!--Icons-->
+        <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+
+        <!--Favicon-->
+        <link rel="icon" href="{{url('assets/site/images/favicon.png')}}" type="image/png">
+    </head>
+    <body>
+    
+        <nav class="navbar navbar-expand-lg navbar-light menu">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                -->
-                <a href="index.php?pg=resultados-pesquisa">
-                    <button class="btn" type="button">
-                        Procurar <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
+                <a class="navbar-brand" href="?pg=home">
+                    <img src="{{url('assets/site/images/logo.png')}}" alt="" class="img-menu">
                 </a>
-            </form>
-        </div><!--actions-form-->
-
-        <div class="rectangle"></div><!--rectangle-->
-
-        <div class="clear"></div>
-
-        <section class="banner">
-            <div class="container banner-ctc-background-over-white card">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <img class="banner-ctc-img" src="{{url('assets/site/images/cards.png')}}">
+                <div class="collapse navbar-collapse">
+                    <ul class="menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="?pg=home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('promotions')}}">Promoções</a>
+                        </li>
+                    </ul>
+                </div><!--collapse-->
+                @if(false)
+                    <div class="main-auth">
+                        <a href="#" class="sign">ENTRAR</a>
+                        <a href="#" class="signup efect-transition">CADASTRE-SE</a>
                     </div>
-                    <div class="col-md-7">
-                        
-                        <div class="banner-ctc-titulo-contenedor"><span>Que tal assinar na EspecializaTi Academy?</span></div>
-                        
-                        <div>
-                            <p>ASSINE E TENHA ACESSO A TODOS OS NOSOS CURSOS DISPONÍVEL NA ESPECIALIZATI ACADEMY. MAIS BARATO QUE UM CAFÉ POR DIA!</p>
+                @else
+                    <div class="main-user-auth">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle user-auth" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="{{url('assets/site/images/no-image.png')}}" alt="" class="img-header-user">
+                                Nome Usuário
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="?pg=meu-perfil">Meu Perfil</a>
+                                <a class="dropdown-item" href="?pg=compras">Minhas Compras</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="">Sair</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="https://academy.especializati.com.br" target="_blank" class="btn pull-right btn-flat flat-medium third-level">
-                            <span>Saiba Mais</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section><!--Banner-->
+                    </div><!-- main-user-auth -->
+                @endif
+            </div><!--Container-->
+        </nav><!--Menu-->
 
-@endsection
+        @yield('content-site')
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <h2>Conheça-nos</h2>
+
+                        <ul class="list-footer">
+                            <li><a href="#">Trabalhe conosco</a></li>
+                            <li><a href="#">Experiência a bordo</a></li>
+                            <li><a href="#">Salas VIP</a></li>
+                            <li><a href="#">Passaredo</a></li>
+                            <li><a href="#">oneworld</a></li>
+                            <li><a href="#">Nossa frota</a></li>
+                            <li><a href="#">Perguntas frequentes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <h2>Transparência</h2>
+
+                        <ul class="list-footer">
+                            <li><a href="#">Trabalhe conosco</a></li>
+                            <li><a href="#">Experiência a bordo</a></li>
+                            <li><a href="#">Salas VIP</a></li>
+                            <li><a href="#">Passaredo</a></li>
+                            <li><a href="#">oneworld</a></li>
+                            <li><a href="#">Nossa frota</a></li>
+                            <li><a href="#">Perguntas frequentes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <h2>Sala de imprensa</h2>
+
+                        <ul class="list-footer">
+                            <li><a href="#">Trabalhe conosco</a></li>
+                            <li><a href="#">Experiência a bordo</a></li>
+                            <li><a href="#">Salas VIP</a></li>
+                            <li><a href="#">Passaredo</a></li>
+                            <li><a href="#">oneworld</a></li>
+                            <li><a href="#">Nossa frota</a></li>
+                            <li><a href="#">Perguntas frequentes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <h2>Sustentabilidade</h2>
+
+                        <ul class="list-footer">
+                            <li><a href="#">Trabalhe conosco</a></li>
+                            <li><a href="#">Experiência a bordo</a></li>
+                            <li><a href="#">Salas VIP</a></li>
+                            <li><a href="#">Passaredo</a></li>
+                            <li><a href="#">oneworld</a></li>
+                            <li><a href="#">Nossa frota</a></li>
+                            <li><a href="#">Perguntas frequentes</a></li>
+                        </ul>
+                    </div>
+
+                </div><!--row-->    
+            </div><!--Container-->
+        </footer><!--Footer-->
+
+        <div class="footer-copy">
+            <div class="container">
+                <p>© EspecializaTi</p>
+            </div>
+        </div><!--Footer Copy-->
+
+
+
+        <!--JS-->
+
+        <!--jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!--Bootstrap-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    </body>
+</html>

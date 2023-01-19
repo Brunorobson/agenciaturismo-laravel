@@ -1,6 +1,5 @@
 @extends('site.layouts.app')
 
-
 @section('content-site')
 
 <section class="slide"></section><!--Slide-->
