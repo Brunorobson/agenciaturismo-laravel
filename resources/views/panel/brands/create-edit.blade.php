@@ -13,15 +13,33 @@
 </a>
 
 <div class="title-pg">
-    <h1 class="title-pg"> Cadastrar Aviões</h1>
+    <h1 class="title-pg">Gestão de Avião</h1>
 </div>
 
 <div class="content-din">
 
+@if(isset($errors) && $errors->any())
+    <div class="alert alert-warning">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (isset($brand))
+    <form class="form form-search form-ds" action="{{route('brands.update', $brand->id)}}" method="POST">
+    {{method_field('PUT')}}
+@else
+    {{-- <form class="form form-search form-ds" action="{{route('brands.store')}}" method="POST"> --}}
+    {!! Form::open(['route' => 'brands.store', 'class' => 'form form-search form-ds'])!!}
+@endif
+
     <form class="form form-search form-ds" action="{{route('brands.store')}}" method="POST">
         {{csrf_field()}}
         <div class="form-group">
-            <input type="text" name="name" placeholder="Nome:" class="form-control">
+            <input type="text" value="{{old('name')}}" name="name" placeholder="Nome:" class="form-control">
         </div>
 
         <div class="form-group">

@@ -10,4 +10,11 @@ class Brand extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function search($keySearch, $totalPage = 10)
+    {
+        return $this
+                    ->where('name', 'LIKE', "%{$keySearch}%")
+                    ->paginate($totalPage);
+    }
 }

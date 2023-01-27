@@ -18,11 +18,11 @@
 <div class="content-din bg-white">
 
     <div class="form-search">
-        <form class="form form-inline">
-            <input type="text" name="nome" placeholder="Nome:" class="form-control">
-         
+            {!! Form::open(['route' => 'brands.search', 'class' => 'form form-inline'])!!}
+            {!! Form::text('key_search', null,['class' => 'form-control', 'placeholder' => 'Buscar por Marcas'])!!}
 
             <button class="btn btn-search">Pesquisar</button>
+            {!!Form::close()!!}
         </form>
     </div>
 
@@ -44,8 +44,8 @@
         <tr>
                 <td>{{$brand->name}}</td>
                 <td>
-                    <a href="{{route('brands.edit', $brand->id)}}" class="edit">Edit</a>
-                    <a href="" class="delete">Delete</a>
+                    <a href="{{route('brands.edit', $brand->id)}}" class="edit">Editar</a>
+                    <a href="{{route('brands.show', $brand->id)}}" class="delete">Visualizar</a>
                 </td>
             </tr>
         @empty
@@ -54,27 +54,12 @@
             </tr>
         @endforelse
     </table>
-
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
+    @if ( @isset($dataForm))
+    {!! $brands->appends($dataForm)->links() !!}
+    @else
+    {!! $brands->links() !!}
+    @endif
+    
 </div><!--Content Dinâmico-->
 
 @endsection
