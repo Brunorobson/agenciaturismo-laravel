@@ -18,13 +18,11 @@
             Nome: <strong>{{$brand->name}}</strong>
         </li>
     </ul>
+    
+    <div class="messages">
+        @include('panel.includes.alerts')        
+    </div>
 
-    @if (session('error'))
-            <div class="alert alert-error">
-                {{session('error')}}
-            </div>
-        
-    @endif
     {!! Form::open(['route' => ['brands.destroy', $brand->id], 'class' => 'form form-search form-ds', 'method' => 'DELETE'])!!}
         <div class="form-group">
             <button class="btn btn-danger">Deletar a Marca {{$brand->name}}</button>

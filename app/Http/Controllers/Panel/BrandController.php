@@ -12,7 +12,7 @@ use function PHPUnit\Framework\returnSelf;
 class BrandController extends Controller
 {
     private $brand;
-    protected $totalPage = 2;
+    protected $totalPage = 20;
 
     public function __construct(Brand $brand)
     {

@@ -35,8 +35,15 @@
 
 			<li>
 				<a href="{{route('brands.index')}}">
-					<i class="fa fa-id-card" aria-hidden="true"></i>
+					<i class="fa fa-university" aria-hidden="true"></i>
 					Marcas
+				</a>
+			</li>
+
+			<li>
+				<a href="{{route('planes.index')}}">
+					<i class="fa fa-plane" aria-hidden="true"></i>
+					Aviões
 				</a>
 			</li>
 		</ul>
